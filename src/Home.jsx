@@ -1,10 +1,10 @@
 import About from "./components/About/About";
 import HeroSection from "./components/Hero/HeroSection";
-import Footer from "./Footer";
 import Skills from "./components/Skills/Skills";
 import Projects from "./components/Projects/Projects";
 import Contact from "./components/Contact/Contact";
 import Border from "./Border";
+import Resume from "./components/Resume/Resume";
 
 function Home() {
   return (
@@ -13,13 +13,13 @@ function Home() {
       <Border />
       <About />
       <Border />
+      <Resume />
+      <Border />
       <Skills />
       <Border />
       <Projects />
       <Border />
       <Contact />
-      <Border />
-      <Footer />
     </div>
   );
 }

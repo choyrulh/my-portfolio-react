@@ -8,7 +8,7 @@ import {
   FaGithub,
 } from "react-icons/fa";
 import { SiTailwindcss, SiRedux } from "react-icons/si";
-import bannerImg from "../../assets/foto.png";
+import bannerImg from "../../assets/foto1.png";
 
 const HeroSection = () => {
   const [text] = useTypewriter({
@@ -16,7 +16,7 @@ const HeroSection = () => {
     loop: true,
     typeSpeed: 20,
     deleteSpeed: 10,
-    delaySpeed: 2000,
+    delaySpeed: 1000,
   });
 
   return (
