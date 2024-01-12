@@ -1,10 +1,10 @@
-import About from "./components/About/About";
-import HeroSection from "./components/Hero/HeroSection";
-import Skills from "./components/Skills/Skills";
-import Projects from "./components/Projects/Projects";
-import Contact from "./components/Contact/Contact";
+import HeroSection from "./Hero/HeroSection";
 import Border from "./Border";
-import Resume from "./components/Resume/Resume";
+import About from "./About/About";
+import Resume from "./Resume/Resume";
+import Skills from "./Skills/Skills";
+import Projects from "./Projects/Projects";
+import Contact from "./Contact/Contact";
 
 function Home() {
   return (

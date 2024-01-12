@@ -1,6 +1,6 @@
 import { ThemeContextProvider } from "./Hooks/themeContext";
-import Home from "./Home";
 import Header from "./components/Header/Header";
+import Home from "./components/Home";
 
 function App() {
   return (
