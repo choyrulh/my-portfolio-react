@@ -15,7 +15,7 @@ const Article = () => {
         <div className="mt-3 w-full h-auto flex flex-col ">
           <ul className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
             <li className="w-full mx-auto group sm:max-w-sm p-4 bg-[#EEEEEE] shadow-md shadow-[#AAAAAA] dark:bg-[#111111] dark:shadow-[#555555] rounded-md">
-              <a href="https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Implementasi+Aplikasi+Sentimen+Pada+Data+twitter+Jelang+++++++++++++++++++++Pemilu+2024&btnG=">
+              <a href="https://doi.org/10.30591/jpit.v8i2.5051">
                 <img
                   src={journal}
                   loading="lazy"

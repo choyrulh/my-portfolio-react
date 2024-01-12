@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useTypewriter } from "react-simple-typewriter";
 import Achievements from "./Achievements";
 import Article from "./Article";
+import Education from "./Education";
 function Resume() {
   const [activeTab, setActiveTab] = useState("Education");
 
@@ -26,7 +27,7 @@ function Resume() {
         </h1>
       </div>
       <div className="flex flex-col lg:flex-col justify-between gap-8">
-        <ul className="gap-2 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
+        <ul className="gap-2 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 ">
           <li
             onClick={() => handleClick("Education")}
             className={`${
@@ -37,16 +38,7 @@ function Resume() {
           >
             Education
           </li>
-          <li
-            onClick={() => handleClick("Professional Skills")}
-            className={`${
-              activeTab === "Professional Skills"
-                ? "border-designColor rounded-lg"
-                : "border-transparent"
-            } resumeLi`}
-          >
-            Professional Skills
-          </li>
+
           <li
             onClick={() => handleClick("Article")}
             className={`${
@@ -68,10 +60,8 @@ function Resume() {
             Achievements
           </li>
         </ul>
-        {activeTab === "Education" && <div>Education Content</div>}
-        {activeTab === "Professional Skills" && (
-          <div>Professional Skills Content</div>
-        )}
+        {activeTab === "Education" && <Education />}
+
         {activeTab === "Article" && <Article />}
         {activeTab === "Achievements" && <Achievements />}
       </div>
