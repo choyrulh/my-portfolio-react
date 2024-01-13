@@ -1,4 +1,9 @@
-import { FaFacebookF, FaLinkedinIn, FaInstagram } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaLinkedinIn,
+  FaInstagram,
+  FaWhatsapp,
+} from "react-icons/fa";
 import contactImg from "../../assets/char.jpg";
 
 const ContactLeft = () => {
@@ -38,15 +43,26 @@ const ContactLeft = () => {
           Find me in
         </h2>
         <div className="flex gap-4">
-          <span className="heroIcon hover:text-[#1877f2]">
-            <FaFacebookF />
-          </span>
-          <span className="heroIcon hover:text-[#bc2a8d]">
-            <FaInstagram />
-          </span>
-          <span className="heroIcon hover:text-[#0077b5]">
-            <FaLinkedinIn />
-          </span>
+          <a href="https://www.facebook.com/choyrul7">
+            <span className="heroIcon hover:text-[#1877f2]">
+              <FaFacebookF />
+            </span>
+          </a>
+          <a href="https://www.instagram.com/choyrulh">
+            <span className="heroIcon hover:text-[#bc2a8d]">
+              <FaInstagram />
+            </span>
+          </a>
+          <a href="https://www.linkedin.com/in/choirul-humam-439055180/">
+            <span className="heroIcon hover:text-[#0077b5]">
+              <FaLinkedinIn />
+            </span>
+          </a>
+          <a href="https://api.whatsapp.com/send?phone=6282332619095">
+            <span className="heroIcon hover:text-[#25d366]">
+              <FaWhatsapp />
+            </span>
+          </a>
         </div>
       </div>
     </div>

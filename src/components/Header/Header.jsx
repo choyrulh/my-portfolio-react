@@ -1,7 +1,8 @@
 import { useState } from "react";
 import DarkToggle from "./DarkToggle";
 import { motion } from "framer-motion";
-
+import { subMenuNav } from "./subMenu";
+import { Link } from "react-scroll";
 const Header = () => {
   const [activeIndex, setActiveIndex] = useState();
   const submenuNav = [
@@ -26,23 +27,31 @@ const Header = () => {
     >
       <nav className="border-b pb-2">
         <ul className="flex items-center gap-x-3 max-w-screen-xl mx-auto px-4 overflow-x-auto lg:px-8">
-          {submenuNav.map((item, idx) => (
+          {subMenuNav.map((item, index) => (
             <motion.li
-              key={idx}
+              key={item.id}
               initial={{ borderBottomWidth: 0 }}
               animate={{
-                borderBottomWidth: idx === activeIndex ? 2 : 0,
+                borderBottomWidth: index === activeIndex ? 2 : 0,
                 borderColor: "#3adbff",
               }}
               className={`py-1`}
             >
-              <a
-                href={item.path}
-                onClick={() => handleItemClick(idx)}
-                className="cursor-pointer dark:text-white block py-2 px-3 rounded-lg text-gray-700 hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-[#222222] duration-150"
+              <Link
+                to={item.link}
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                className={`dark:text-white block py-2 px-3 rounded-lg text-gray-700 hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-[#222222] duration-150 ${
+                  index === activeIndex
+                    ? "text-blue-500 dark:text-blue-400"
+                    : ""
+                }`}
+                onClick={() => handleItemClick(index)}
               >
                 {item.title}
-              </a>
+              </Link>
             </motion.li>
           ))}
         </ul>
