@@ -41,9 +41,9 @@ const HeroSection = () => {
             />
           </h2>
           <p className="text-base font-bodyFont leading-6 tracking-wide">
-            I use animation as a third dimension by which to simplify
-            experiences and kuiding thro each and every interaction. I am not
-            adding motion just to spruce things up, but doing it in ways that.
+            Hello, introduce me Choirul Humam, a fresh graduate from Amikom
+            University Yogyakarta with a Bachelor of Computer Science degree in
+            informatics. Thank you for visiting my profile website, please enjoy
           </p>
           <DownloadCV />
         </div>
@@ -53,18 +53,26 @@ const HeroSection = () => {
               Find me in
             </h2>
             <div className="flex gap-4">
-              <span className="heroIcon hover:text-[#1877f2]">
-                <FaFacebookF />
-              </span>
-              <span className="heroIcon hover:text-[#bc2a8d]">
-                <FaInstagram />
-              </span>
-              <span className="heroIcon hover:text-[#0077b5]">
-                <FaLinkedinIn />
-              </span>
-              <span className="heroIcon dark:hover:text-white hover:text-black">
-                <FaGithub />
-              </span>
+              <a href="https://www.facebook.com/choyrul7">
+                <span className="heroIcon hover:text-[#1877f2]">
+                  <FaFacebookF />
+                </span>
+              </a>
+              <a href="https://www.instagram.com/choyrulh">
+                <span className="heroIcon hover:text-[#bc2a8d]">
+                  <FaInstagram />
+                </span>
+              </a>
+              <a href="https://www.linkedin.com/in/choirul-humam-439055180/">
+                <span className="heroIcon hover:text-[#0077b5]">
+                  <FaLinkedinIn />
+                </span>
+              </a>
+              <a href="https://github.com/choyrulh">
+                <span className="heroIcon dark:hover:text-white hover:text-black">
+                  <FaGithub />
+                </span>
+              </a>
             </div>
           </div>
           <div>

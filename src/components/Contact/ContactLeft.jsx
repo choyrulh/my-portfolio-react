@@ -42,7 +42,7 @@ const ContactLeft = () => {
         <h2 className="text-base uppercase text-[#444444] dark:text-[#CCCCCC] mb-4">
           Find me in
         </h2>
-        <div className="flex gap-4">
+        <div className="flex flex-row gap-2 md:gap-4">
           <a href="https://www.facebook.com/choyrul7">
             <span className="heroIcon hover:text-[#1877f2]">
               <FaFacebookF />

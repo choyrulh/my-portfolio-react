@@ -19,7 +19,7 @@ const Projects = () => {
           {text}
         </h1>
       </div>
-      <div className="container px-6 mx-auto">
+      <div className="container px-1 sml:px-2 lg:px-6 mx-auto">
         <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 lg:grid-cols-2">
           <Portfolio />
         </div>

@@ -3,7 +3,18 @@ import journal from "../../assets/certif-journal.jpg";
 import udemy from "../../assets/course-udemy.jpg";
 import fcc from "../../assets/freecodecamp.png";
 import toefl from "../../assets/toefl.jpg";
+import { useState } from "react";
+import Modal from "./Modal";
 const Achievements = () => {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const openModal = (image) => {
+    setSelectedImage(image);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -11,7 +22,7 @@ const Achievements = () => {
       className="w-full flex flex-col lgl:flex-row gap-10 lgl:gap-20"
     >
       <ul className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-        <li className="achievCard">
+        <li onClick={() => openModal(udemy)} className="achievCard">
           <img className="object-cover w-full h-72" src={udemy} alt="avatar" />
           <div className="py-5 text-center">
             <a
@@ -26,7 +37,7 @@ const Achievements = () => {
             </span>
           </div>
         </li>
-        <li className="achievCard">
+        <li onClick={() => openModal(fcc)} className="achievCard">
           <img className="object-cover w-full h-72" src={fcc} alt="avatar" />
 
           <div className="py-5 text-center">
@@ -42,7 +53,7 @@ const Achievements = () => {
             </span>
           </div>
         </li>
-        <li className="achievCard">
+        <li onClick={() => openModal(journal)} className="achievCard">
           <img
             className="object-cover w-full h-72"
             src={journal}
@@ -63,7 +74,7 @@ const Achievements = () => {
             </span>
           </div>
         </li>
-        <li className="achievCard">
+        <li onClick={() => openModal(toefl)} className="achievCard">
           <img className="object-cover w-full h-72" src={toefl} alt="avatar" />
 
           <div className="py-5 text-center">
@@ -80,6 +91,7 @@ const Achievements = () => {
           </div>
         </li>
       </ul>
+      {selectedImage && <Modal image={selectedImage} onClose={closeModal} />}
     </motion.div>
   );
 };

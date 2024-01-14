@@ -10,10 +10,12 @@ import nodejs from "../../assets/logo/nodejs.svg";
 import redux from "../../assets/logo/redux.svg";
 import tanstack from "../../assets/logo/tanstack.svg";
 import nextjs from "../../assets/logo/nextjs.svg";
-import docker from "../../assets/logo/docker.svg";
+import ts from "../../assets/logo/ts.svg";
 import python from "../../assets/logo/python.svg";
 import jupyter from "../../assets/logo/jupyter.svg";
 import linux from "../../assets/logo/linux.svg";
+import git from "../../assets/logo/git.svg";
+import router from "../../assets/logo/react-router.svg";
 import { motion } from "framer-motion";
 
 const Logo = () => {
@@ -37,13 +39,15 @@ const Logo = () => {
     { name: "React", src: react },
     { name: "Redux", src: redux },
     { name: "Tanstack", src: tanstack },
+    { name: "React Router", src: router },
+    { name: "TypeScript", src: ts },
     { name: "Framer", src: framer },
     { name: "Axios", src: axios },
     { name: "Next.js", src: nextjs },
-    { name: "Docker", src: docker },
     { name: "Python", src: python },
     { name: "Jupyter", src: jupyter },
     { name: "Linux", src: linux },
+    { name: "Git", src: git },
   ];
   return (
     <>

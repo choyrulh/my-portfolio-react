@@ -12,7 +12,7 @@ const DarkToggle = () => {
 
   return (
     <div
-      className="flex flex-row items-center gap-2 shadow-inner shadow-[#CCCCCC] dark:shadow-[#444444] hover:outline-green-500 p-1 cursor-pointer transition duration-300 ease-in-out rounded-md"
+      className="flex flex-row items-center gap-2 shadow-inner shadow-[#CCCCCC]  dark:shadow-[#444444] hover:outline-green-500 p-1 cursor-pointer transition duration-300 ease-in-out rounded-md"
       onClick={() => handleChangeTheme(theme === "light" ? "dark" : "light")}
     >
       <span>
