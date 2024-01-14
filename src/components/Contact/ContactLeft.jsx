@@ -22,8 +22,8 @@ const ContactLeft = () => {
           Front End Developer
         </p>
         <p className="text-base text-[#444444] dark:text-[#CCCCCC] tracking-wide">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis
-          ipsam autem cumque, accusantium dicta odio.
+          If you want to contact me, you can contact me via whatsapp or via
+          email listed below
         </p>
         <p className="text-base text-[#444444] dark:text-[#CCCCCC] flex items-center gap-2">
           Phone:{" "}
