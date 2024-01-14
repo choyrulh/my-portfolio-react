@@ -23,7 +23,7 @@ const ContactLeft = () => {
         </p>
         <p className="text-base text-[#444444] dark:text-[#CCCCCC] tracking-wide">
           If you want to contact me, you can contact me via whatsapp or via
-          email listed below
+          email listed below, or via the contact form on the side, thank you.
         </p>
         <p className="text-base text-[#444444] dark:text-[#CCCCCC] flex items-center gap-2">
           Phone:{" "}

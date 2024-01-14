@@ -1,6 +1,7 @@
 import { useTypewriter } from "react-simple-typewriter";
 import { useState } from "react";
 import ContactLeft from "./ContactLeft";
+import emailjs from "emailjs-com";
 
 const Contact = () => {
   const [form, setForm] = useState({
@@ -24,15 +25,39 @@ const Contact = () => {
     ) {
       setForm({ ...form, errMsg: "Give a valid Email!" });
     } else {
-      setForm({
-        username: "",
-        phoneNumber: "",
-        email: "",
-        subject: "",
-        message: "",
-        errMsg: "",
-        successMsg: `Thank you dear ${username}, Your Messages has been sent Successfully!`,
-      });
+      const serviceId = "service_yzf88yr"; // replace with your EmailJS service ID
+      const templateId = "template_iqd9z6v"; // replace with your EmailJS template ID
+      const userId = "yZaedR_net7LeYTz2"; // replace with your EmailJS user ID
+
+      const templateParams = {
+        username,
+        phoneNumber,
+        email,
+        subject,
+        message,
+      };
+
+      emailjs.send(serviceId, templateId, templateParams, userId).then(
+        (response) => {
+          console.log("Email sent successfully:", response);
+          setForm({
+            username: "",
+            phoneNumber: "",
+            email: "",
+            subject: "",
+            message: "",
+            errMsg: "",
+            successMsg: `Thank you dear ${username}, Your message has been sent successfully!`,
+          });
+        },
+        (error) => {
+          console.error("Email sending failed:", error);
+          setForm({
+            ...form,
+            errMsg: "Oops! Something went wrong. Please try again later.",
+          });
+        }
+      );
     }
   };
   const [text] = useTypewriter({
