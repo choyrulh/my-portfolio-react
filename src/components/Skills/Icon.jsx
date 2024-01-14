@@ -18,7 +18,7 @@ import git from "../../assets/logo/git.svg";
 import router from "../../assets/logo/react-router.svg";
 import { motion } from "framer-motion";
 
-const Logo = () => {
+const Icon = () => {
   const filterHover = {
     rest: { filter: "brightness(0.5)" },
     hover: { filter: "brightness(1)", y: -10 },
@@ -77,4 +77,4 @@ const Logo = () => {
   );
 };
 
-export default Logo;
+export default Icon;

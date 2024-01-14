@@ -1,5 +1,5 @@
 import { useTypewriter } from "react-simple-typewriter";
-import Logo from "./logo";
+import Icon from "./Icon";
 
 const Skills = () => {
   const [text] = useTypewriter({
@@ -19,7 +19,7 @@ const Skills = () => {
         </h1>
       </div>
       <div className="max-w-screen-xl mx-auto text-center">
-        <Logo />
+        <Icon />
       </div>
     </section>
   );
