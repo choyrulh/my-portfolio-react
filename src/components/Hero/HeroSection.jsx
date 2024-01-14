@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import { SiTailwindcss, SiRedux } from "react-icons/si";
 import bannerImg from "../../assets/foto1.png";
+import DownloadCV from "../DownloadCV";
 
 const HeroSection = () => {
   const [text] = useTypewriter({
@@ -44,6 +45,7 @@ const HeroSection = () => {
             experiences and kuiding thro each and every interaction. I am not
             adding motion just to spruce things up, but doing it in ways that.
           </p>
+          <DownloadCV />
         </div>
         <div className="flex flex-col xl:flex-row gap-6 lgl:gap-0 justify-between">
           <div>
@@ -60,7 +62,7 @@ const HeroSection = () => {
               <span className="heroIcon hover:text-[#0077b5]">
                 <FaLinkedinIn />
               </span>
-              <span className="heroIcon hover:text-white">
+              <span className="heroIcon dark:hover:text-white hover:text-black">
                 <FaGithub />
               </span>
             </div>

@@ -6,7 +6,7 @@ function Education() {
       animate={{ opacity: 1, transition: { duration: 0.5 } }}
       className="w-full flex flex-col lgl:flex-row gap-10 lgl:gap-20"
     >
-      <ul className="w-full grid grid-cols-3 gap-3">
+      <ul className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         <li className="achievCard">
           <img
             className="object-cover w-full h-72"
