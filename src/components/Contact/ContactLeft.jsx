@@ -26,13 +26,13 @@ const ContactLeft = () => {
           email listed below, or via the contact form on the side, thank you.
         </p>
         <p className="text-base text-[#444444] dark:text-[#CCCCCC] flex items-center gap-2">
-          Phone:{" "}
+          Phone :{" "}
           <span className="text-[#444444] dark:text-[#CCCCCC]">
-            +6292332619095
+            +6282332619095
           </span>
         </p>
         <p className="text-base text-[#444444] dark:text-[#CCCCCC] flex items-center gap-2">
-          Email:{" "}
+          Email :{" "}
           <span className="text-[#444444] dark:text-[#CCCCCC]">
             irul.humam@gmail.com
           </span>
@@ -42,7 +42,7 @@ const ContactLeft = () => {
         <h2 className="text-base uppercase text-[#444444] dark:text-[#CCCCCC] mb-4">
           Find me in
         </h2>
-        <div className="flex flex-row gap-2 md:gap-4">
+        <div className="flex flex-row gap-2 md:gap-4 justify-evenly">
           <a href="https://www.facebook.com/choyrul7">
             <span className="heroIcon hover:text-[#1877f2]">
               <FaFacebookF />
