@@ -11,12 +11,37 @@ import redux from "../../assets/logo/redux.svg";
 import tanstack from "../../assets/logo/tanstack.svg";
 import nextjs from "../../assets/logo/nextjs.svg";
 import ts from "../../assets/logo/ts.svg";
-import python from "../../assets/logo/python.svg";
+import express from "../../assets/logo/expressJS.svg";
 import jupyter from "../../assets/logo/jupyter.svg";
-import linux from "../../assets/logo/linux.svg";
+import mongo from "../../assets/logo/mongoDB.svg";
 import git from "../../assets/logo/git.svg";
 import router from "../../assets/logo/react-router.svg";
 import { motion } from "framer-motion";
+
+const logos = [
+  { name: "HTML", src: html },
+  { name: "CSS", src: css },
+  { name: "JavaScript", src: js },
+  { name: "Node.js", src: nodejs },
+  { name: "Bootstrap", src: bootstrap },
+  { name: "Tailwind CSS", src: tailwindcss },
+];
+const logos1 = [
+  { name: "React", src: react },
+  { name: "Redux", src: redux },
+  { name: "Tanstack", src: tanstack },
+  { name: "React Router", src: router },
+  { name: "TypeScript", src: ts },
+  { name: "Framer", src: framer },
+];
+const logos2 = [
+  { name: "Axios", src: axios },
+  { name: "Next.js", src: nextjs },
+  { name: "ExpressJS", src: express },
+  { name: "Jupyter", src: jupyter },
+  { name: "MongoDB", src: mongo },
+  { name: "Git", src: git },
+];
 
 const Icon = () => {
   const filterHover = {
@@ -29,26 +54,6 @@ const Icon = () => {
     visible: { opacity: 1, y: 0 },
   };
 
-  const logos = [
-    { name: "HTML", src: html },
-    { name: "CSS", src: css },
-    { name: "JavaScript", src: js },
-    { name: "Node.js", src: nodejs },
-    { name: "Bootstrap", src: bootstrap },
-    { name: "Tailwind CSS", src: tailwindcss },
-    { name: "React", src: react },
-    { name: "Redux", src: redux },
-    { name: "Tanstack", src: tanstack },
-    { name: "React Router", src: router },
-    { name: "TypeScript", src: ts },
-    { name: "Framer", src: framer },
-    { name: "Axios", src: axios },
-    { name: "Next.js", src: nextjs },
-    { name: "Python", src: python },
-    { name: "Jupyter", src: jupyter },
-    { name: "Linux", src: linux },
-    { name: "Git", src: git },
-  ];
   return (
     <>
       <motion.ul
@@ -59,6 +64,34 @@ const Icon = () => {
         className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5"
       >
         {logos.map((logo, index) => (
+          <motion.li
+            key={index}
+            whileHover="hover"
+            initial="rest"
+            animate="rest"
+            whileTap="hover"
+            variants={filterHover}
+            className="p-2 rounded-md shadow-md dark:shadow-black transition-transform duration-250 ease-in-out transform hover:shadow-lg"
+          >
+            <img className="w-20 h-20 mx-auto" src={logo.src} alt={logo.name} />
+            <p className="mt-2 text-sm text-gray-700">{logo.name}</p>
+          </motion.li>
+        ))}
+        {logos1.map((logo, index) => (
+          <motion.li
+            key={index}
+            whileHover="hover"
+            initial="rest"
+            animate="rest"
+            whileTap="hover"
+            variants={filterHover}
+            className="p-2 rounded-md shadow-md dark:shadow-black transition-transform duration-250 ease-in-out transform hover:shadow-lg"
+          >
+            <img className="w-20 h-20 mx-auto" src={logo.src} alt={logo.name} />
+            <p className="mt-2 text-sm text-gray-700">{logo.name}</p>
+          </motion.li>
+        ))}
+        {logos2.map((logo, index) => (
           <motion.li
             key={index}
             whileHover="hover"

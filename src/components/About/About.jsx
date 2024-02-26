@@ -1,6 +1,30 @@
 import { useTypewriter } from "react-simple-typewriter";
 import char from "../../assets/char2.jpg";
+import { motion, useAnimation, useInView } from "framer-motion";
+import { useEffect, useRef } from "react";
+
+const boxVariant = {
+  visible: { opacity: 1, x: 0, transition: { duration: 1 } },
+  hidden: { opacity: 0, x: -200, transition: { duration: 1 } },
+};
+const imgVariant = {
+  visible: { opacity: 1, x: 0, transition: { duration: 1 } },
+  hidden: { opacity: 0, x: 200, transition: { duration: 1 } },
+};
+
 const About = () => {
+  const control = useAnimation();
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+
+  useEffect(() => {
+    if (isInView) {
+      control.start("visible");
+    } else {
+      control.start("hidden");
+    }
+  });
+
   const [text] = useTypewriter({
     words: ["About Me "],
     loop: true,
@@ -18,7 +42,13 @@ const About = () => {
         </h1>
       </div>
       <div className="flex flex-col lg:flex-row justify-between gap-8">
-        <div className="w-full lg:w-7/12 flex flex-col justify-center">
+        <motion.div
+          ref={ref}
+          variants={boxVariant}
+          animate={control}
+          initial="hidden"
+          className="w-full lg:w-7/12 flex flex-col justify-center"
+        >
           <p className="font-normal text-base leading-6 text-black dark:text-white">
             Hello, Introducing my name Choirul Humam, I was born and reside in
             Pati, Central Java Indonesia. I am a frontend web developer and data
@@ -34,14 +64,20 @@ const About = () => {
             myself, I can spend more than 8 hours in front of my laptop to
             create projects and learn a little about the backend.
           </p>
-        </div>
-        <div className="h-72 w-full lg:w-3/12 ml-auto">
+        </motion.div>
+        <motion.div
+          ref={ref}
+          variants={imgVariant}
+          animate={control}
+          initial="hidden"
+          className="h-72 w-full lg:w-3/12 ml-auto"
+        >
           <img
             className="w-full h-full object-cover rounded-lg transform lg:scale-x-[-1] scale-x-[1] "
             src={char}
             alt="Character"
           />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

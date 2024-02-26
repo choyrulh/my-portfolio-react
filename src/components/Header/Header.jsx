@@ -35,7 +35,7 @@ const Header = () => {
         <ul className=" flex-col hidden sml:flex sml:flex-row items-center gap-x-3 max-w-screen-xl mx-auto px-4 lg:px-8 overflow-x-auto">
           {subMenuNav.map((item, index) => (
             <motion.li
-              key={item.id}
+              key={index}
               initial={{ borderBottomWidth: 0 }}
               animate={{
                 borderBottomWidth: index === activeIndex ? 2 : 0,

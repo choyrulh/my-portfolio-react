@@ -3,6 +3,7 @@ import { useTypewriter } from "react-simple-typewriter";
 import Achievements from "./Achievements";
 import Article from "./Article";
 import Education from "./Education";
+import { motion } from "framer-motion";
 function Resume() {
   const [activeTab, setActiveTab] = useState("Education");
 
@@ -28,36 +29,33 @@ function Resume() {
       </div>
       <div className="flex flex-col lg:flex-col justify-between gap-8">
         <ul className="gap-2 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 ">
-          <li
-            onClick={() => handleClick("Education")}
-            className={`${
-              activeTab === "Education"
-                ? "border-designColor rounded-lg"
-                : "border-transparent"
-            } resumeLi`}
-          >
+          <li onClick={() => handleClick("Education")} className="resumeLi">
             Education
+            {activeTab === "Education" && (
+              <motion.span
+                layoutId="underline"
+                className="absolute border-[1px] w-full h-20 rounded-md border-[#3adbff] "
+              />
+            )}
           </li>
 
-          <li
-            onClick={() => handleClick("Article")}
-            className={`${
-              activeTab === "Article"
-                ? "border-designColor rounded-lg"
-                : "border-transparent"
-            } resumeLi`}
-          >
+          <li onClick={() => handleClick("Article")} className="resumeLi">
             Article
+            {activeTab === "Article" && (
+              <motion.span
+                layoutId="underline"
+                className="absolute border-[1px] w-full h-20 rounded-md border-[#3adbff] "
+              />
+            )}
           </li>
-          <li
-            onClick={() => handleClick("Achievements")}
-            className={`${
-              activeTab === "Achievements"
-                ? "border-designColor rounded-lg"
-                : "border-transparent"
-            } resumeLi`}
-          >
+          <li onClick={() => handleClick("Achievements")} className="resumeLi">
             Achievements
+            {activeTab === "Achievements" && (
+              <motion.span
+                layoutId="underline"
+                className="absolute border-[1px] w-full h-20 rounded-md border-[#3adbff] "
+              />
+            )}
           </li>
         </ul>
         {activeTab === "Education" && <Education />}

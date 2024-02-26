@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 import reactjs from "../../assets/react.svg";
 import tailwindcss from "../../assets/tailwind.svg";
 import framerMotion from "../../assets/framer.svg";
@@ -9,10 +9,49 @@ import ecommercess from "../../assets/ecommerce.png";
 import gamess from "../../assets/games.png";
 import moviess from "../../assets/movie.png";
 import quizss from "../../assets/quiz.png";
+import { useEffect, useRef } from "react";
+
+const boxVariants = {
+  hidden: { opacity: 0, scale: 0, x: -200 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    x: 0,
+    transition: { duration: 1, delay: 0.1 },
+  },
+};
+const boxVariants2 = {
+  hidden: { opacity: 0, scale: 0, x: 200 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    x: 0,
+    transition: { duration: 1, delay: 0.1 },
+  },
+};
+
 export const Portfolio = () => {
+  const control = useAnimation();
+  const ref = useRef(null);
+  const ref2 = useRef(null);
+  const isInView = useInView(ref);
+  const isInView2 = useInView(ref2);
+
+  useEffect(() => {
+    if (isInView || isInView2) {
+      control.start("visible");
+    }
+  }, [control, isInView]);
+
   return (
     <>
-      <a href="https://choirul-toko-kita-apps.vercel.app/">
+      <motion.a
+        ref={ref}
+        variants={boxVariants}
+        animate={control}
+        initial="hidden"
+        href="https://choirul-toko-kita-apps.vercel.app/"
+      >
         <div
           style={{
             backgroundImage: `url(${ecommercess})`,
@@ -41,8 +80,14 @@ export const Portfolio = () => {
             </span>
           </motion.div>
         </div>
-      </a>
-      <a href="https://choirul-movie-apps.vercel.app/">
+      </motion.a>
+      <motion.a
+        ref={ref}
+        variants={boxVariants2}
+        animate={control}
+        initial="hidden"
+        href="https://choirul-movie-apps.vercel.app/"
+      >
         <div
           style={{
             backgroundImage: `url(${moviess})`,
@@ -70,8 +115,14 @@ export const Portfolio = () => {
             </span>
           </motion.div>
         </div>
-      </a>
-      <a href="https://humam-games.vercel.app/">
+      </motion.a>
+      <motion.a
+        ref={ref2}
+        variants={boxVariants}
+        animate={control}
+        initial="hidden"
+        href="https://humam-games.vercel.app/"
+      >
         <div
           style={{
             backgroundImage: `url(${gamess})`,
@@ -99,8 +150,14 @@ export const Portfolio = () => {
             </span>
           </motion.div>
         </div>
-      </a>
-      <a href="https://choirul-quiz.vercel.app/">
+      </motion.a>
+      <motion.a
+        ref={ref2}
+        variants={boxVariants2}
+        animate={control}
+        initial="hidden"
+        href="https://choirul-quiz.vercel.app/"
+      >
         <div
           style={{
             backgroundImage: `url(${quizss})`,
@@ -128,7 +185,7 @@ export const Portfolio = () => {
             </span>
           </motion.div>
         </div>
-      </a>
+      </motion.a>
     </>
   );
 };

@@ -10,8 +10,31 @@ import {
 import { SiTailwindcss, SiRedux } from "react-icons/si";
 import bannerImg from "../../assets/foto1.png";
 import DownloadCV from "../DownloadCV";
+import { motion, useAnimation, useInView } from "framer-motion";
+import { useEffect, useRef } from "react";
+
+const boxVariant = {
+  visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+  hidden: { opacity: 0, y: -200, transition: { duration: 1 } },
+};
+const imgVariant = {
+  visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+  hidden: { opacity: 0, y: 200, transition: { duration: 1 } },
+};
 
 const HeroSection = () => {
+  const control = useAnimation();
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+
+  useEffect(() => {
+    if (isInView) {
+      control.start("visible");
+    } else {
+      control.start("hidden");
+    }
+  }, [control, isInView]);
+
   const [text] = useTypewriter({
     words: ["Fresh Graduate.", "Frontend Developer.", "Data Science. "],
     loop: true,
@@ -25,7 +48,13 @@ const HeroSection = () => {
       id="home"
       className="dark:text-white w-full pt-5 pb-7 flex flex-col gap-10 xl:gap-0 lg:flex-row items-center font-titleFont"
     >
-      <div className="w-full lgl:w-1/2 flex flex-col gap-20">
+      <motion.div
+        variants={boxVariant}
+        animate={control}
+        initial="hidden"
+        ref={ref}
+        className="w-full lgl:w-1/2 flex flex-col gap-20"
+      >
         <div className="flex flex-col gap-5">
           <h4 className=" text-lg font-normal">WELCOME TO MY PORTFOLIO</h4>
           <h1 className="text-6xl font-bold ">
@@ -95,9 +124,13 @@ const HeroSection = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
       {/* <div className="w-full lgl:w-1/2 h-full flex justify-center bottom-10 items-center relative"> */}
-      <img
+      <motion.img
+        variants={imgVariant}
+        ref={ref}
+        animate={control}
+        initial="hidden"
         className="w-[300px] ml-auto h-fit bottom-16 lgl:w-[500px] lgl:h-[680px] z-10 object-cover relative"
         src={bannerImg}
         alt="bannerImg"
