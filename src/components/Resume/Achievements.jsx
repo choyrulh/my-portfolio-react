@@ -3,6 +3,8 @@ import journal from "../../assets/certif-journal.jpg";
 import udemy from "../../assets/course-udemy.jpg";
 import fcc from "../../assets/freecodecamp.png";
 import toefl from "../../assets/toefl.jpg";
+import next from "../../assets/nextjs-sertif.jpg";
+import node from "../../assets/node-sertif.jpg";
 import { useState } from "react";
 import Modal from "./Modal";
 const Achievements = () => {
@@ -87,6 +89,38 @@ const Achievements = () => {
             </a>
             <span className="text-sm text-gray-700 dark:text-gray-200">
               Toefl Like Test English
+            </span>
+          </div>
+        </li>
+        <li onClick={() => openModal(next)} className="achievCard">
+          <img className="object-cover w-full h-72" src={next} alt="avatar" />
+
+          <div className="py-5 text-center">
+            <a
+              href="#"
+              className="block text-xl font-bold text-gray-800 dark:text-white"
+              role="link"
+            >
+              Course Udemy
+            </a>
+            <span className="text-sm text-gray-700 dark:text-gray-200">
+              Next JS Udemy Course
+            </span>
+          </div>
+        </li>
+        <li onClick={() => openModal(node)} className="achievCard">
+          <img className="object-cover w-full h-72" src={node} alt="avatar" />
+
+          <div className="py-5 text-center">
+            <a
+              href="#"
+              className="block text-xl font-bold text-gray-800 dark:text-white"
+              role="link"
+            >
+              Course Udemy
+            </a>
+            <span className="text-sm text-gray-700 dark:text-gray-200">
+              Node JS, Mongo, Express JS Udemy Course
             </span>
           </div>
         </li>

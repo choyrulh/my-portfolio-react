@@ -8,7 +8,11 @@ import tanstack from "../../assets/tanstack.svg";
 import ecommercess from "../../assets/ecommerce.png";
 import gamess from "../../assets/games.png";
 import moviess from "../../assets/movie.png";
-import quizss from "../../assets/quiz.png";
+import mernProject from "../../assets/mern.png";
+import mongodb from "../../assets/logo/mongoDB.svg";
+import expressJs from "../../assets/logo/expressJS.svg";
+import nodeJs from "../../assets/logo/nodejs.svg";
+
 import { useEffect, useRef } from "react";
 
 const boxVariants = {
@@ -156,11 +160,11 @@ export const Portfolio = () => {
         variants={boxVariants2}
         animate={control}
         initial="hidden"
-        href="https://choirul-quiz.vercel.app/"
+        href="https://news-with-mern-frontend.vercel.app/"
       >
         <div
           style={{
-            backgroundImage: `url(${quizss})`,
+            backgroundImage: `url(${mernProject})`,
             backgroundPosition: "center",
           }}
           className="flex items-end overflow-hidden bg-cover rounded-lg h-96"
@@ -172,16 +176,16 @@ export const Portfolio = () => {
             className="w-full px-8 py-4 overflow-hidden rounded-b-lg backdrop-blur-sm bg-white/60 dark:bg-gray-800/60"
           >
             <h2 className="mt-3 text-xl font-semibold text-gray-800 capitalize dark:text-white">
-              Quiz
+              MERN Stack News
             </h2>
             <p className="mt-2 text-lg tracking-wider text-blue-500 uppercase dark:text-blue-400 ">
               Website
             </p>
             <span className="mt-4 inline-flex gap-4 ">
               <img className="w-9 h-9" src={reactjs} />
-              <img className="w-9 h-9" src={tailwindcss} />
-
-              <img className="w-9 h-9" src={framerMotion} />
+              <img className="w-9 h-9" src={mongodb} />
+              <img className="w-9 h-9" src={expressJs} />
+              <img className="w-9 h-9" src={nodeJs} />
             </span>
           </motion.div>
         </div>

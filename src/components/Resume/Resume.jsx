@@ -4,8 +4,9 @@ import Achievements from "./Achievements";
 import Article from "./Article";
 import Education from "./Education";
 import { motion } from "framer-motion";
+import Experience from "./Experience";
 function Resume() {
-  const [activeTab, setActiveTab] = useState("Education");
+  const [activeTab, setActiveTab] = useState("Experience");
 
   const handleClick = (tab) => {
     setActiveTab(tab);
@@ -28,7 +29,16 @@ function Resume() {
         </h1>
       </div>
       <div className="flex flex-col lg:flex-col justify-between gap-8">
-        <ul className="gap-2 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 ">
+        <ul className="gap-2 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 ">
+          <li onClick={() => handleClick("Experience")} className="resumeLi">
+            Experience
+            {activeTab === "Experience" && (
+              <motion.span
+                layoutId="underline"
+                className="absolute border-[1px] w-full h-20 rounded-md border-[#3adbff] "
+              />
+            )}
+          </li>
           <li onClick={() => handleClick("Education")} className="resumeLi">
             Education
             {activeTab === "Education" && (
@@ -61,6 +71,7 @@ function Resume() {
         {activeTab === "Education" && <Education />}
 
         {activeTab === "Article" && <Article />}
+        {activeTab === "Experience" && <Experience />}
         {activeTab === "Achievements" && <Achievements />}
       </div>
     </section>

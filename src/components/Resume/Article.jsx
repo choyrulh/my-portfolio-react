@@ -10,7 +10,7 @@ const Article = () => {
     >
       <div>
         <div className="py-3 lgl:py-5 font-titleFont flex flex-col gap-4">
-          <p className="text-sm text-designColor tracking-[4px]">2023</p>
+          <p className="text-sm text-[#3adbff] tracking-[4px]">2023</p>
         </div>
         <div className="mt-3 w-full h-auto flex flex-col ">
           <ul className="grid gap-x-8 gap-y-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
