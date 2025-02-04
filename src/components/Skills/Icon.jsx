@@ -1,113 +1,71 @@
-import html from "../../assets/logo/html5.svg";
-import css from "../../assets/logo/css3.svg";
-import js from "../../assets/logo/javascript.svg";
-import bootstrap from "../../assets/logo/bootstrap.svg";
-import tailwindcss from "../../assets/logo/tailwind.svg";
-import react from "../../assets/logo/react.svg";
-import framer from "../../assets/logo/framer.svg";
-import axios from "../../assets/logo/axios.svg";
-import nodejs from "../../assets/logo/nodejs.svg";
-import redux from "../../assets/logo/redux.svg";
-import tanstack from "../../assets/logo/tanstack.svg";
-import nextjs from "../../assets/logo/nextjs.svg";
-import ts from "../../assets/logo/ts.svg";
-import express from "../../assets/logo/expressJS.svg";
-import jupyter from "../../assets/logo/jupyter.svg";
-import mongo from "../../assets/logo/mongoDB.svg";
-import git from "../../assets/logo/git.svg";
-import router from "../../assets/logo/react-router.svg";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
+import PropTypes from "prop-types";
 
-const logos = [
-  { name: "HTML", src: html },
-  { name: "CSS", src: css },
-  { name: "JavaScript", src: js },
-  { name: "Node.js", src: nodejs },
-  { name: "Bootstrap", src: bootstrap },
-  { name: "Tailwind CSS", src: tailwindcss },
-];
-const logos1 = [
-  { name: "React", src: react },
-  { name: "Redux", src: redux },
-  { name: "Tanstack", src: tanstack },
-  { name: "React Router", src: router },
-  { name: "TypeScript", src: ts },
-  { name: "Framer", src: framer },
-];
-const logos2 = [
-  { name: "Axios", src: axios },
-  { name: "Next.js", src: nextjs },
-  { name: "ExpressJS", src: express },
-  { name: "Jupyter", src: jupyter },
-  { name: "MongoDB", src: mongo },
-  { name: "Git", src: git },
-];
-
-const Icon = () => {
-  const filterHover = {
-    rest: { filter: "brightness(0.5)" },
-    hover: { filter: "brightness(1)", y: -10 },
-  };
-
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
-
+export const SkillCard = ({ logo, index }) => {
   return (
-    <>
-      <motion.ul
-        variants={fadeInUp}
-        initial="hidden"
-        animate="visible"
-        transition={{ duration: 0.5 }}
-        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5"
-      >
-        {logos.map((logo, index) => (
-          <motion.li
-            key={index}
-            whileHover="hover"
-            initial="rest"
-            animate="rest"
-            whileTap="hover"
-            variants={filterHover}
-            className="p-2 rounded-md shadow-md dark:shadow-black transition-transform duration-250 ease-in-out transform hover:shadow-lg"
-          >
-            <img className="w-20 h-20 mx-auto" src={logo.src} alt={logo.name} />
-            <p className="mt-2 text-sm text-gray-700">{logo.name}</p>
-          </motion.li>
-        ))}
-        {logos1.map((logo, index) => (
-          <motion.li
-            key={index}
-            whileHover="hover"
-            initial="rest"
-            animate="rest"
-            whileTap="hover"
-            variants={filterHover}
-            className="p-2 rounded-md shadow-md dark:shadow-black transition-transform duration-250 ease-in-out transform hover:shadow-lg"
-          >
-            <img className="w-20 h-20 mx-auto" src={logo.src} alt={logo.name} />
-            <p className="mt-2 text-sm text-gray-700">{logo.name}</p>
-          </motion.li>
-        ))}
-        {logos2.map((logo, index) => (
-          <motion.li
-            key={index}
-            whileHover="hover"
-            initial="rest"
-            animate="rest"
-            whileTap="hover"
-            variants={filterHover}
-            className="p-2 rounded-md shadow-md dark:shadow-black transition-transform duration-250 ease-in-out transform hover:shadow-lg"
-          >
-            <img className="w-20 h-20 mx-auto" src={logo.src} alt={logo.name} />
-            <p className="mt-2 text-sm text-gray-700">{logo.name}</p>
-          </motion.li>
-        ))}
-      </motion.ul>
-    </>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1, type: "spring", stiffness: 100 }}
+      whileHover={{
+        y: -10,
+        scale: 1.05,
+        transition: { type: "spring", stiffness: 300 },
+      }}
+      className="p-4 rounded-xl bg-white dark:bg-transparent/20 backdrop-blur-lg shadow-md dark:shadow-emerald-400/50 hover:shadow-xl dark:hover:shadow-emerald-400 transition-all duration-300 group relative overflow-hidden"
+    >
+      <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-emerald-400 opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
+      <img
+        className="w-20 h-20 mx-auto object-contain transform group-hover:scale-110 transition-transform duration-300"
+        src={logo.src}
+        alt={logo.name}
+      />
+      <p className="mt-3 text-sm font-medium text-gray-600 dark:text-gray-300 group-hover:text-cyan-500 transition-colors duration-300">
+        {logo.name}
+      </p>
+    </motion.div>
   );
 };
 
-export default Icon;
+SkillCard.propTypes = {
+  logo: PropTypes.shape({
+    src: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+  index: PropTypes.number.isRequired,
+};
+
+const SkillsGrid = ({ logos }) => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
+
+  useEffect(() => {
+    if (inView) controls.start("visible");
+  }, [controls, inView]);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 px-4"
+    >
+      {logos.map((logo, index) => (
+        <SkillCard key={index} logo={logo} index={index} />
+      ))}
+    </motion.div>
+  );
+};
+
+SkillsGrid.propTypes = {
+  logos: PropTypes.arrayOf(
+    PropTypes.shape({
+      src: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
+
+export default SkillsGrid;
