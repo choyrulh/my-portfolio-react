@@ -1,31 +1,103 @@
-import ExperienceCard from "./ExperienceCard";
-import { motion } from "framer-motion";
+import ResumeCard from "./ExperienceCard";
+import { motion, useInView, useAnimation } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 function Experience() {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { 
+    once: false,
+    margin: "-100px" 
+  });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    } else {
+      controls.start("hidden");
+    }
+  }, [controls, isInView]);
+
+  const containerVariants = {
+    hidden: {
+      opacity: 0,
+      y: 20,
+      transition: {
+        duration: 0.5,
+        ease: "easeInOut"
+      }
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const titleVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: -20,
+      transition: {
+        duration: 0.5
+      }
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.5,
+        delay: 0.2
+      }
+    }
+  };
+
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.5 } }}
-      className="justify-center w-full flex flex-col lgl:flex-row gap-10 lgl:gap-20"
-    >
-      <div>
-        <div className="py-6 lgl:py-12 font-titleFont flex flex-col gap-4">
-          <p className="text-sm text-[#3adbff] tracking-[4px]">2024</p>
-          <h2 className="text-gray-600 text-3xl md:text-4xl font-bold">
+    <section className="py-16 md:py-20 lg:py-24 px-4 md:px-8 lg:px-12 max-w-7xl mx-auto">
+      <motion.div
+        ref={sectionRef}
+        initial="hidden"
+        animate={controls}
+        variants={containerVariants}
+        className="w-full"
+      >
+        <motion.div 
+          variants={titleVariants}
+          className="mb-12 md:mb-16"
+        >
+          <motion.p 
+            className="text-sm text-cyan-500 dark:text-cyan-400 tracking-[4px] mb-2"
+            whileHover={{ x: 10 }}
+          >
+            2024
+          </motion.p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 dark:text-gray-100">
             Job Experience
           </h2>
+        </motion.div>
+
+        <div className="relative">
+          {/* Vertical line */}
+          <div className="absolute left-4 top-0 h-full w-[6px] bg-gray-200 dark:bg-gray-700/30 rounded-full" />
+          
+          {/* Experience cards */}
+          <div className="space-y-8 md:space-y-12">
+            <ResumeCard
+              title="Junior Frontend Developer"
+              subTitle="PT Summit Global Teknologi (Maret - Mei 2023)"
+              result="Tangerang"
+              des="Led frontend development initiatives using React and Next.js, collaborating with cross-functional teams to deliver responsive and performant web applications. Implemented modern UI/UX practices and optimized application performance."
+            />
+            {/* Add more ResumeCard components as needed */}
+          </div>
         </div>
-        <div className="mt-6 lgl:mt-14 w-full h-auto border-l-[6px] border-l-black border-opacity-30 flex flex-col gap-10">
-          <ExperienceCard
-            title="Junior Frontend Developer"
-            subTitle="PT Summit Global Teknologi (Maret - Mei 2023)"
-            result="Tangerang"
-            des="Google's hiring process is an important part of our culture. Googlers care deeply about their teams and the people who make them up."
-          />
-        </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </section>
   );
-}
+};
 
 export default Experience;

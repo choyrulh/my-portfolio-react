@@ -23,13 +23,31 @@ import { useEffect, useRef } from "react";
 // };
 
 const HeroSection = () => {
-  const control = useAnimation();
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const textControl = useAnimation();
+  const imageControl = useAnimation();
+  
+  const textRef = useRef(null);
+  const imageRef = useRef(null);
+  
+  const isTextInView = useInView(textRef, { once: false, margin: "-100px" });
+  const isImageInView = useInView(imageRef, { once: false, margin: "-100px" });
 
   useEffect(() => {
-    if (isInView) control.start("visible");
-  }, [control, isInView]);
+    if (isTextInView) {
+      textControl.start("visible");
+    } else {
+      textControl.start("hidden");
+    }
+  }, [textControl, isTextInView]);
+
+  useEffect(() => {
+    if (isImageInView) {
+      imageControl.start("visible");
+    } else {
+      imageControl.start("hidden");
+    }
+  }, [imageControl, isImageInView]);
+
 
   const [text] = useTypewriter({
     words: ["Frontend Engineer.", "Data Scientist."],
@@ -40,22 +58,42 @@ const HeroSection = () => {
   });
 
   const staggerVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { 
+      opacity: 0, 
+      y: 20,
+      transition: {
+        duration: 0.5,
+        ease: "easeInOut"
+      }
+    },
     visible: (i) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: i * 0.2 + 0.5 },
+      transition: { 
+        delay: i * 0.2,
+        duration: 0.5,
+        ease: "easeOut"
+      },
     }),
   };
 
   const imageVariants = {
-    hidden: { opacity: 0, x: 100, scale: 0.9 },
+    hidden: { 
+      opacity: 0, 
+      x: 100, 
+      scale: 0.9,
+      transition: {
+        duration: 0.5,
+        ease: "easeInOut"
+      }
+    },
     visible: {
       opacity: 1,
       x: 0,
       scale: 1,
       transition: {
         duration: 0.8,
+        ease: "easeOut"
       },
     },
   };
@@ -63,14 +101,27 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative dark:text-white w-full py-20 lg:py-32 flex flex-col lg:flex-row items-center justify-between font-titleFont overflow-hidden"
+      className="relative dark:text-white w-full py-unset lg:py-32 flex flex-col lg:flex-row items-center justify-between font-titleFont overflow-hidden"
     >
       <motion.div
         className="w-full lg:w-1/2 space-y-8 lg:space-y-12 relative z-10"
         initial="hidden"
-        animate={control}
-        variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
-        ref={ref}
+        animate={textControl}
+        variants={{ 
+          visible: { 
+            transition: { 
+              staggerChildren: 0.1,
+              delayChildren: 0.2
+            } 
+          },
+          hidden: {
+            transition: { 
+              staggerChildren: 0.05,
+              staggerDirection: -1
+            }
+          }
+        }}
+        ref={textRef}
       >
         {/* Animated Elements */}
         <motion.div variants={staggerVariants} custom={0}>
@@ -190,9 +241,9 @@ const HeroSection = () => {
       <motion.div
         className="w-full lg:w-1/2 flex justify-center lg:justify-end mt-16 lg:mt-0 pr-8"
         initial="hidden"
-        animate={control}
+        animate={imageControl}
         variants={imageVariants}
-        ref={ref}
+        ref={imageRef}
       >
         <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-96 lg:h-96 group">
           {/* Animated gradient background */}
@@ -229,7 +280,7 @@ const HeroSection = () => {
           <motion.div
             className="absolute -bottom-8 left-0 right-0 flex justify-center gap-4"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={isImageInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ delay: 0.5, type: "spring" }}
           >
             {["React", "Tailwind", "Framer"].map((tech, index) => (

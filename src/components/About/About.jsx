@@ -8,13 +8,37 @@ import { SiTailwindcss, SiJavascript } from "react-icons/si";
 import { TbBrandNextjs, TbBrandRedux, TbBrandTypescript } from "react-icons/tb";
 
 const About = () => {
-  const control = useAnimation();
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const textControl = useAnimation();
+  const imageControl = useAnimation();
+  
+  const textRef = useRef(null);
+  const imageRef = useRef(null);
+  
+  const isTextInView = useInView(textRef, { 
+    once: false,
+    margin: "-100px"
+  });
+  
+  const isImageInView = useInView(imageRef, { 
+    once: false,
+    margin: "-100px"
+  });
 
   useEffect(() => {
-    if (isInView) control.start("visible");
-  }, [control, isInView]);
+    if (isTextInView) {
+      textControl.start("visible");
+    } else {
+      textControl.start("hidden");
+    }
+  }, [textControl, isTextInView]);
+
+  useEffect(() => {
+    if (isImageInView) {
+      imageControl.start("visible");
+    } else {
+      imageControl.start("hidden");
+    }
+  }, [imageControl, isImageInView]);
 
   const [text] = useTypewriter({
     words: ["About Me"],
@@ -24,21 +48,43 @@ const About = () => {
   });
 
   const staggerVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { 
+      opacity: 0, 
+      y: 20,
+      transition: {
+        duration: 0.5,
+        ease: "easeInOut"
+      }
+    },
     visible: (i) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: i * 0.2 + 0.5 },
+      transition: { 
+        delay: i * 0.2,
+        duration: 0.5,
+        ease: "easeOut"
+      },
     }),
   };
 
   const imageVariants = {
-    hidden: { opacity: 0, x: 100, scale: 0.9 },
+    hidden: { 
+      opacity: 0, 
+      x: 100, 
+      scale: 0.9,
+      transition: {
+        duration: 0.5,
+        ease: "easeInOut"
+      }
+    },
     visible: {
       opacity: 1,
       x: 0,
       scale: 1,
-      transition: { duration: 0.8 },
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      },
     },
   };
 
@@ -57,10 +103,23 @@ const About = () => {
       <div className="flex flex-col lg:flex-row justify-between gap-12 items-center">
         {/* Text Content */}
         <motion.div
-          ref={ref}
+          ref={textRef}
           initial="hidden"
-          animate={control}
-          variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+          animate={textControl}
+          variants={{ 
+            visible: { 
+              transition: { 
+                staggerChildren: 0.1,
+                delayChildren: 0.2
+              } 
+            },
+            hidden: {
+              transition: { 
+                staggerChildren: 0.05,
+                staggerDirection: -1
+              }
+            }
+          }}
           className="w-full lg:w-7/12 space-y-8"
         >
           <motion.p
@@ -145,20 +204,30 @@ const About = () => {
 
         {/* Image Section */}
         <motion.div
-          ref={ref}
+          ref={imageRef}
           initial="hidden"
-          animate={control}
+          animate={imageControl}
           variants={imageVariants}
           className="relative w-full lg:w-4/12 group"
         >
           <div className="relative overflow-hidden rounded-2xl transform perspective-1000">
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-emerald-400/20 blur-xl rounded-2xl" />
-            <img
+            <motion.div 
+              className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-emerald-400/20 blur-xl rounded-2xl"
+              initial={{ opacity: 0 }}
+              animate={isImageInView ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ duration: 0.5 }}
+            />
+            <motion.img
               className="w-full h-96 object-cover rounded-2xl shadow-2xl transform group-hover:scale-105 transition-all duration-300"
               src={char}
               alt="Choirul Humam Profile"
             />
-            <div className="absolute inset-0 border-2 border-cyan-400/30 rounded-2xl pointer-events-none" />
+            <motion.div 
+              className="absolute inset-0 border-2 border-cyan-400/30 rounded-2xl pointer-events-none"
+              initial={{ opacity: 0 }}
+              animate={isImageInView ? { opacity: 1 } : { opacity: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            />
           </div>
         </motion.div>
       </div>
