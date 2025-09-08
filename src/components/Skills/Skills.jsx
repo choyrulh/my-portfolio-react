@@ -45,6 +45,55 @@ const logos2 = [
   { name: "Git", src: git },
 ];
 
+// Animation variants for section elements
+const sectionVariants = {
+  hidden: { 
+    opacity: 0,
+    y: 50 
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut"
+    }
+  }
+};
+
+const titleVariants = {
+  hidden: { 
+    opacity: 0,
+    y: 30,
+    scale: 0.9
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  }
+};
+
+const descriptionVariants = {
+  hidden: { 
+    opacity: 0,
+    y: 20
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      delay: 0.2,
+      ease: "easeOut"
+    }
+  }
+};
+
 const Skills = () => {
   const [text] = useTypewriter({
     words: [
@@ -59,36 +108,61 @@ const Skills = () => {
   });
 
   return (
-    <section
+    <motion.section
       id="skills"
-      className="relative py-20  dark:from-gray-900/50 dark:to-gray-800/50 overflow-hidden"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={sectionVariants}
+      className="relative py-20 dark:from-gray-900/50 dark:to-gray-800/50 overflow-hidden"
     >
       <div className="2xl:container 2xl:mx-auto lg:px-20 px-4">
         <div className="mb-16 text-center">
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            variants={titleVariants}
             className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-emerald-500 bg-clip-text text-transparent inline-block"
           >
             {text}
             <Cursor cursorColor="#3adbff" />
           </motion.h2>
-          <p className="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <motion.p
+            variants={descriptionVariants}
+            className="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+          >
             Technologies I&apos;ve mastered and tools I use daily to create
             amazing digital experiences
-          </p>
+          </motion.p>
         </div>
 
-        <SkillsGrid logos={[...logos, ...logos1, ...logos2]} />
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          <SkillsGrid logos={[...logos, ...logos1, ...logos2]} />
+        </motion.div>
       </div>
 
-      {/* Animated background elements */}
+      {/* Animated background elements with scroll reveal */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute -top-20 -right-20 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-emerald-400/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, delay: 0.5 }}
+          className="absolute -top-20 -right-20 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl animate-pulse"
+        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, delay: 0.8 }}
+          className="absolute -bottom-20 -left-20 w-96 h-96 bg-emerald-400/10 rounded-full blur-3xl animate-pulse delay-1000"
+        />
       </div>
-    </section>
+    </motion.section>
   );
 };
+
 export default Skills;

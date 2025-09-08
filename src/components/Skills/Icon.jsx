@@ -6,9 +6,20 @@ import PropTypes from "prop-types";
 export const SkillCard = ({ logo, index }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1, type: "spring", stiffness: 100 }}
+      initial={{ opacity: 0, y: 50, scale: 0.8 }}
+      whileInView={{ 
+        opacity: 1, 
+        y: 0, 
+        scale: 1,
+        transition: { 
+          delay: index * 0.1, 
+          duration: 0.6,
+          type: "spring", 
+          stiffness: 100,
+          damping: 10
+        }
+      }}
+      viewport={{ once: true, amount: 0.3 }}
       whileHover={{
         y: -10,
         scale: 1.05,
@@ -37,12 +48,32 @@ SkillCard.propTypes = {
   index: PropTypes.number.isRequired,
 };
 
+// Container animation variants
+const containerVariants = {
+  hidden: { 
+    opacity: 0 
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+};
+
 const SkillsGrid = ({ logos }) => {
   const controls = useAnimation();
-  const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
+  const [ref, inView] = useInView({ 
+    threshold: 0.1, 
+    triggerOnce: true,
+    rootMargin: "-50px 0px"
+  });
 
   useEffect(() => {
-    if (inView) controls.start("visible");
+    if (inView) {
+      controls.start("visible");
+    }
   }, [controls, inView]);
 
   return (
@@ -50,6 +81,7 @@ const SkillsGrid = ({ logos }) => {
       ref={ref}
       initial="hidden"
       animate={controls}
+      variants={containerVariants}
       className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 px-4"
     >
       {logos.map((logo, index) => (

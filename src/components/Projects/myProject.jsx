@@ -14,6 +14,7 @@ import expressJs from "../../assets/logo/expressJS.svg";
 import nodeJs from "../../assets/logo/nodejs.svg";
 import { useInView } from "react-intersection-observer";
 import dronePage from "../../assets/drone-web.webp";
+import hotelWeb from "../../assets/hotel-web.webp";
 
 // import { useEffect, useRef } from "react";
 
@@ -103,7 +104,15 @@ export const Portfolio = () => {
       tech: [reactjs, tailwindcss, framerMotion],
       type: "Single Page Animation",
       tags: ["React", "TailwindCSS", "Framer-Motion"],
-    }
+    },
+    {
+      title: "Booking Hotel Website",
+      href: "https://booking-hotel-mu.vercel.app/",
+      image: hotelWeb,
+      tech: [nextjs, tailwindcss, mongodb, expressJs, nodeJs],
+      type: "Fullstack Web App",
+      tags: ["MongoDB", "Express", "Next.js", "Node.js"],
+    },
   ];
 
   return (

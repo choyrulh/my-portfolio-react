@@ -133,7 +133,7 @@ const HeroSection = () => {
         <motion.h1
           variants={staggerVariants}
           custom={1}
-          className="text-5xl lg:text-7xl font-bold"
+          className="text-5xl lg:text-7xl font-bold mt-auto"
         >
           <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-500">
             Choirul Humam.
