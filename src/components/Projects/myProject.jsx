@@ -7,7 +7,6 @@ import tanstack from "../../assets/tanstack.svg";
 import ecommercess from "../../assets/ecommerce.png";
 import nextjs from "../../assets/nextjs.svg";
 import movie_web from "../../assets/movie-web.webp";
-import topup_game from "../../assets/top-up-game.webp";
 import mernProject from "../../assets/mern.png";
 import mongodb from "../../assets/logo/mongoDB.svg";
 import expressJs from "../../assets/logo/expressJS.svg";
@@ -15,6 +14,8 @@ import nodeJs from "../../assets/logo/nodejs.svg";
 import { useInView } from "react-intersection-observer";
 import xeron from "../../assets/xeron.webp";
 import hotelWeb from "../../assets/hotel-web.webp";
+import slashTravel from "../../assets/slash-travel.webp";
+import supabase from "../../assets/logo/supabase.svg";
 
 // import { useEffect, useRef } from "react";
 
@@ -82,12 +83,12 @@ export const Portfolio = () => {
       tags: ["Next.js", "TypeScript", "TanStack Query"],
     },
     {
-      title: "Game Topup System",
-      href: "https://topup-games-indol.vercel.app/",
-      image: topup_game,
-      tech: [nextjs, tailwindcss, tanstack],
-      type: "E-commerce",
-      tags: ["Next.js", "Payment Gateway", "Dashboard"],
+      title: "Slash Travel",
+      href: "https://slash-travel.vercel.app/",
+      image: slashTravel,
+      tech: [nextjs, tailwindcss, tanstack, supabase],
+      type: "Fullstack Web App",
+      tags: ["Next.js", "Tailwind", "TanStack Query", "Supabase"],
     },
     {
       title: "News Portal",
