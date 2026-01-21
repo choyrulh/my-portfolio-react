@@ -1,7 +1,7 @@
 import { useTypewriter } from "react-simple-typewriter";
 import { useState } from "react";
 import ContactLeft from "./ContactLeft";
-import emailjs from "emailjs-com";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [form, setForm] = useState({
