@@ -14,7 +14,7 @@ import nodeJs from "../../assets/logo/nodejs.svg";
 import { useInView } from "react-intersection-observer";
 import xeron from "../../assets/xeron.webp";
 import hotelWeb from "../../assets/hotel-web.webp";
-import slashTravel from "../../assets/slash-travel.webp";
+import slashTravel from "../../assets/slash-travel.png";
 import supabase from "../../assets/logo/supabase.svg";
 
 // import { useEffect, useRef } from "react";
