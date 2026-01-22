@@ -76,7 +76,7 @@ export const Portfolio = () => {
     },
     {
       title: "Movie Database",
-      href: "https://movie-apps-with-next15.vercel.app/",
+      href: "https://slashverse.vercel.app/",
       image: movie_web,
       tech: [nextjs, tailwindcss, tanstack],
       type: "Next.js App",
