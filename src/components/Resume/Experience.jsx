@@ -107,11 +107,9 @@ function Experience() {
           </motion.p>
         </motion.div>
 
-        <div className="relative">
-          {/* Vertical line */}
+        {/*<div className="relative">
           <div className="absolute left-4 top-0 h-full w-[6px] bg-gray-200 dark:bg-gray-700/30 rounded-full" />
           
-          {/* Experience cards */}
           <div className="space-y-8 md:space-y-12">
             <ResumeCard
               title="Fullstack Web Developer"
@@ -120,9 +118,8 @@ function Experience() {
               des="Lead frontend development initiatives using React 
               , Next.js, Express.js, collaborating with cross-functional teams to deliver responsive and performant web applications. Implemented modern UI/UX practices and optimized application performance."
             />
-            {/* Add more ResumeCard components as needed */}
           </div>
-        </div>
+        </div>*/}
       </motion.div>
     </section>
   );
